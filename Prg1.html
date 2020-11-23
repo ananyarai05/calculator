@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<p id="demo" align="center"></p>
+<script>
+            
+var x = document.getElementById("demo");
+var lat = localStorage.latitude;
+var lon = localStorage.longitude;
+x.innerHTML = "Previous Users location<br> Latitude: " + lat + 
+  "<br>Longitude: " + lon;
+		
+</script>
+
+<svg height="440" width="1500" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <circle cx="450" cy="250" r="140" stroke="black" stroke-width="3" fill="yellow" />
+  Sorry, your browser does not support inline SVG. 
+  <circle cx="850" cy="250" r="140" stroke="black" stroke-width="3" fill="green" />
+  Sorry, your browser does not support inline SVG.   
+</svg> 
+<div align="center">
+<img id="drag1" src="HP.jfif" draggable="true" ondragstart="drag(event)" width="285" height="100" margin= "250">
+</div>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<script>
+navigator.geolocation.getCurrentPosition(function(p){
+   localStorage.setItem("latitude", p.coords.latitude);
+   localStorage.setItem("longitude", p.coords.longitude)
+}, function(e){console.log(e)})
+</script>
+
+
+</body>
+</html>
