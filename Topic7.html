@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title> Topic7 </title>
+
+<p>Click the button to encode a URI.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var uri = "https://getbootstrap.com/docs/4.1/content/images/";
+  var res = encodeURIComponent(uri);
+  document.getElementById("demo").innerHTML = res;
+}
+</script>
+
+</body>
+</html>
